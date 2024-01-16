@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +15,11 @@ class PaidPage extends StatefulWidget {
 }
 
 class _PaidPageState extends State<PaidPage> {
+  Random random = Random();
+  late int randomNumber;
   @override
   initState() {
+    randomNumber = random.nextInt(1000000000);
     super.initState();
   }
 
@@ -59,7 +64,8 @@ class _PaidPageState extends State<PaidPage> {
             ),
             20.verticalSpace,
             Text(
-              "order_text".tr(),
+              "order_text"
+                  .tr(namedArgs: {"orderNumber": randomNumber.toString()}),
               textAlign: TextAlign.center,
               style: Style.regular14(
                 color: Style.grey2Text,
